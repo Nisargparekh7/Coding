@@ -30,6 +30,6 @@ public:
             
         }
         
-        return fast;
+        return slow;
     }
 };
