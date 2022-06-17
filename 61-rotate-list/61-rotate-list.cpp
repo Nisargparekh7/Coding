@@ -10,56 +10,30 @@
  */
 class Solution {
 public:
-        
-    ListNode* rotate(ListNode* head){
-        ListNode * n=head;
-        ListNode * m=head;
-        ListNode * temp=head;
-        
-        if (head==NULL || head->next ==NULL) return head;
-        while(m->next->next !=NULL){
-            m = m->next;
-        }
-        n=m->next;
-        
-            n->next=temp;
-            m->next =NULL;
-            head=n;
-        
-        return head;
-    }
-    
     ListNode* rotateRight(ListNode* head, int k) {
-        
-//         ListNode * n=head;
-//         ListNode * m=head;
+
       ListNode * temp=head;
         
        if (head==NULL || head->next ==NULL) return head;
-//         while(m->next->next !=NULL){
-//             m = m->next;
-//         }
-//         n=m->next;
+        int count=1;
+        while (temp->next){
+            ++count;
+            temp=temp->next;
+        }
         
-//             n->next=temp;
-//             m->next =NULL;
-//             head=n;
-        int count=0;
-        while(temp){
-            count++;
-            temp = temp->next;
+        // linking last node to head
+        temp->next=head;
+        
+        k= k% count;
+        k= count-k;
+        
+        // tarvasal till k, and make  head=temp->next , and k->next=null 
+        while(k--){
+            temp=temp->next;
         }
-                // cout<<k<< "  ";  
-                // cout<<count<< "  ";  
-        int x= k % count;
-        // cout<<x<< "  ";         
-        // x=x-1;
-        // cout<<x<<"  ";
-        while(x>0) {
-            cout<< "in" ;
-            head= rotate(head);
-            x--;
-        }
+        head=temp->next;
+        temp->next=NULL;
+       
         
         return head;
     }
