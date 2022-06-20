@@ -43,21 +43,14 @@ class Solution
         for(int i=0;i<n;i++){
             
             int x= arr[i].dead;
-            //cout<<arr[i].dead<<"  ";
             x=x-1;
-            // if(a[x]==0){
-            //     a[x]=arr[i].profit;
-            //     //cout<<arr[i].profit<<" ";
-            // }
             
-            // else{
                 for(int k=x; k>=0;k-- ){
                     if(a[k]==0){
                         a[k]=arr[i].profit;
                         //cout<<arr[i].profit<<" ";
                         break;
                     }   
-                // }
             }
         }
         
