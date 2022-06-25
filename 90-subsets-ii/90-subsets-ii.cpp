@@ -11,14 +11,11 @@ public:
         }
         
       temp.push_back(nums[index]);
-     //ans +=arr[index];
-      //cout<< ans<< " ";
+     
       
       subset_sum(index+1,nums,sum,temp, n);
       
       temp.pop_back();
-    //   ans -=arr[index];
-      //cout<< ans<< " ";
       
       subset_sum(index+1,nums,sum,temp,n);
        
@@ -28,10 +25,9 @@ public:
         sort(nums.begin(), nums.end());
         vector<vector<int>> sum;
         int N= nums.size();
-        //int ans;
+        
         vector<int> temp;
         subset_sum(0,nums,sum,temp,N);
-        //std::vector<vector<int>> v(sum.begin(), sum.end());
 
         return sum;
     }
