@@ -15,7 +15,7 @@ public:
         temp.push_back(arr[index]);
         subset_sum(index,arr,sum,temp,n,target-arr[index]);
         temp.pop_back();
-        }
+       }
         subset_sum(index+1,arr,sum,temp,n,target);
                
         }
