@@ -1,10 +1,10 @@
 class Solution {
 public:
     
-    void subset_sum(int index, vector<int>& nums, set<vector<int>>& sum, vector<int>&temp, int n){
+    void subset_sum(int index, vector<int>& nums, vector<vector<int>>& sum, vector<int>&temp, int n){
         if(index==n) {
             if(std::find (sum.begin(), sum.end(), temp)== sum.end()) {
-            sum.insert(temp);    
+            sum.push_back(temp);    
             }
             
             return ;
@@ -26,13 +26,13 @@ public:
     
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         sort(nums.begin(), nums.end());
-        set<vector<int>> sum;
+        vector<vector<int>> sum;
         int N= nums.size();
         //int ans;
         vector<int> temp;
         subset_sum(0,nums,sum,temp,N);
-        std::vector<vector<int>> v(sum.begin(), sum.end());
+        //std::vector<vector<int>> v(sum.begin(), sum.end());
 
-        return v;
+        return sum;
     }
 };
