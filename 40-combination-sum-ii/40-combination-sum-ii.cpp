@@ -7,7 +7,7 @@ public:
         }
          
         for(int i=index;i<arr.size();i++){
-            
+            // i> index to check that we are starting from this number for 1st time and not 2nd time
             if(i>index && arr[i]==arr[i-1])continue;
             
             if(arr[i]>target)break;
@@ -26,7 +26,7 @@ public:
         sort(candidates.begin(), candidates.end());
         vector<vector<int>> sum;
         vector<int> temp;
-        //int ans=0;
+        
         subset_sum(0,candidates,sum,temp,target);
 
         return sum;
