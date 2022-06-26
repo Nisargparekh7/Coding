@@ -10,9 +10,9 @@ public:
                 freq[i]=1;
                 temp.push_back(nums[i]);
                 recursion_permute(nums,ans, temp, freq);
-               
+                temp.pop_back();
                 freq[i]=0;
-                 temp.pop_back();
+                
             }
         }
     }
