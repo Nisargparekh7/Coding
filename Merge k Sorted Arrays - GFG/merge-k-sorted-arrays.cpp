@@ -19,19 +19,23 @@ class Solution
 {
     public:
     //Function to merge k sorted arrays.
-    vector<int> mergeKArrays(vector<vector<int>> kArrays, int k)
+    vector<int> mergeKArrays(vector<vector<int>> arr, int k)
     {
-            priority_queue<int,vector<int>, greater<int>> pq;
+        priority_queue<pair<int, pair<int, int>>,vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> pq;
         
         for(int i=0; i<k;i++){
-            for(int j=0; j<kArrays[i].size();j++){
-                pq.push(kArrays[i][j]);
-            }
+            pq.push(make_pair(arr[i][0],make_pair(i,0)));
         }
         vector<int> ans;
         while(pq.size()){
-            ans.push_back(pq.top());
+            
+            ans.push_back(pq.top().first);
+            int row = pq.top().second.first;
+            int index = pq.top().second.second;
             pq.pop();
+            if(index<k-1){
+                pq.push(make_pair(arr[row][index+1],make_pair(row,index+1)));
+            }
         }
         return ans;
     }
