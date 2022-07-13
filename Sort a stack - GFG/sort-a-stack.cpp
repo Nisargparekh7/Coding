@@ -49,33 +49,22 @@ public:
 
 /* The below method sorts the stack s 
 you are required to complete the below method */
+void sorted(stack<int>&s, int x){
+    if(s.empty() or x>s.top()){
+        s.push(x);
+        return;
+    }
+    int temp= s.top();
+    s.pop();
+    sorted(s,x);
+    s.push(temp);
+}
 void SortedStack :: sort()
 {
-    stack<int> s1;
-    vector<int> x;
-    //int n=s.size();
-while(s.size()){
-    if(s1.empty()){
-        s1.push(s.top());
-       // cout<<s.top();
-        s.pop();
-    }
-    else{
-        while(s.size() && s1.size()&& s.top()<s1.top() ){
-            x.push_back(s1.top());
-            s1.pop();
-        //s1.push(x);
-        }
-        s1.push(s.top());
-        s.pop();
-        
-        for(int i=x.size()-1;i>=0;i--){
-            s1.push(x[i]);
-        }
-        x.clear();
-        //cout<< ""<< s.size();
-    }
-}
-    s=s1;
-   //Your code here
+    if(!s.empty()){
+    int x= s.top();
+    s.pop();
+    sort();
+    sorted(s,x);
+}   //Your code here
 }
