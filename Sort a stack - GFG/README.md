@@ -1,5 +1,5 @@
 # Sort a stack
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a stack, the task is to sort&nbsp;it such that the top of the stack has the greatest&nbsp;element.</span></p>
 
