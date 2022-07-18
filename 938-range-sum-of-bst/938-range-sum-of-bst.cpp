@@ -11,29 +11,42 @@
  */
 class Solution {
 public:
-    int sum=0;
     int rangeSumBST(TreeNode* root, int low, int high) {
-         rsum(root, low, high);
-        return sum;
-    }
-    int rsum(TreeNode* root, int low, int high){
-        if(root==NULL)return 0;
-        
-        if(root->val<low ){
-            // sum+=root->val;
-              rsum(root->right, low,high);
+         if(root==NULL)return 0;
+        if(root->val >=low && root->val <= high){
+            return root->val + rangeSumBST(root->left,low,high) +rangeSumBST(root->right,low,high);
         }
-        else if(root->val>high){
-            rsum(root->left, low,high);
+        else if(root->val<low){
+            return rangeSumBST(root->right,low,high);
         }
         else{
-            rsum(root->left, low,high);
-            cout<<root->val<< " ";
-            rsum(root->right, low,high);
-            sum+=root->val;
-            //sum+=root->val;
+            return rangeSumBST(root->left,low,high);
         }
-        return sum;
+        
     }
+    //int sum=0;
+//     int rangeSumBST(TreeNode* root, int low, int high) {
+//          rsum(root, low, high);
+//         return sum;
+//     }
+//     int rsum(TreeNode* root, int low, int high){
+//         if(root==NULL)return 0;
+        
+//         if(root->val<low ){
+//             // sum+=root->val;
+//               rsum(root->right, low,high);
+//         }
+//         else if(root->val>high){
+//             rsum(root->left, low,high);
+//         }
+//         else{
+//             rsum(root->left, low,high);
+//             cout<<root->val<< " ";
+//             rsum(root->right, low,high);
+//             sum+=root->val;
+          
+//         }
+//         return sum;
+   // }
     
 };
