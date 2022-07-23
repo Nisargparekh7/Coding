@@ -20,13 +20,11 @@ public:
             return;
         }
         
-        getMinimumDifference(root->left);
+        solve(root->left);
         minimum = min(abs(root->val - prev),minimum);
         prev= root->val;
     
-        getMinimumDifference(root->right);
-        // minimum = min(abs(root->val - prev),minimum);
-        // prev= root->val;
+        solve(root->right);
     }
     int getMinimumDifference(TreeNode* root) {
         
