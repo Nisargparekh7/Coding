@@ -16,7 +16,6 @@ public:
     
     void solve(TreeNode* root){
         if(root==NULL ){
-            //prev= root->val;
             return;
         }
         
