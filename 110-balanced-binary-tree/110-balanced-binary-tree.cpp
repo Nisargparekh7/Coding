@@ -14,12 +14,10 @@ public:
     int cnt=0;
     bool isBalanced(TreeNode* root) {
         if(root==NULL)return 1;
-        // TreeNode* L= root->left;
-        // TreeNode* R= root->right;
         int x= height(root->left);
         int y= height(root->right);
         
-        if (abs(x-y)<=1 &&isBalanced(root->left) &&isBalanced(root->right) )return true;
+        if (abs(x-y)<=1 && isBalanced(root->left) &&isBalanced(root->right) )return true;
         return false ; 
     }
     
