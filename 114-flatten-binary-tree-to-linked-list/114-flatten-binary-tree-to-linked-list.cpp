@@ -12,36 +12,36 @@
 class Solution {
 public:
         
-     // recursion
-    TreeNode *prev= NULL;
+     // recursion  time: O(n), space O(n)
+    // TreeNode *prev= NULL;
     void flatten(TreeNode* root) {
-            if(root==NULL) return ;
-        flatten(root->right);
-        flatten(root->left);
-        root->right=prev;
-        root->left=NULL;
-        prev=root;
+    //         if(root==NULL) return ;
+    //     flatten(root->right);
+    //     flatten(root->left);
+    //     root->right=prev;
+    //     root->left=NULL;
+    //     prev=root;
         
         
-        // approch- morris travelsal
+        // approch- morris travelsal time O(n), space O(1)
         
-//         TreeNode *curr = root;
-//         while(curr!=NULL){
+        TreeNode *curr = root;
+        while(curr!=NULL){
 
-//             if(curr->left!=NULL){
-//                 TreeNode* prev= curr->left;
+            if(curr->left!=NULL){
+                TreeNode* prev= curr->left;
                 
-//                 while(prev->right){
-//                     prev= prev->right;
-//                 }
+                while(prev->right){
+                    prev= prev->right;
+                }
                 
-//                 prev->right= curr->right;
+                prev->right= curr->right;
                 
-//                 curr->right=curr->left;
-//                 curr->left = NULL;
-//             }
-//             cout<<curr->val<<' ';
-//             curr=curr->right;
-//         }
+                curr->right=curr->left;
+                curr->left = NULL;
+            }
+            cout<<curr->val<<' ';
+            curr=curr->right;
+        }
     }
 };
