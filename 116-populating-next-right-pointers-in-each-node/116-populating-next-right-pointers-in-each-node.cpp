@@ -26,8 +26,8 @@ public:
             while(current!=NULL){
                 
             current->left->next=current->right;
-            if(current->next==NULL)break;
-            current->right->next=current->next->left;
+            // if(current->next==NULL)break;
+            current->right->next=current->next==NULL?NULL: current->next->left;
             current=current->next;
             }
             current=temp->left;
