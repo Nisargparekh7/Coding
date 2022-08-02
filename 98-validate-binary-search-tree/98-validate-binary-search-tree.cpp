@@ -18,7 +18,6 @@ public:
     bool helper(TreeNode* root, long mini, long maxa){
         if(root==NULL) return true;
         if(root->val <= mini || root->val >=maxa) return false;
-        //cout<<"root:"<<root->val<< "mini: "<<mini<<" maxa: "<<maxa<<endl; 
         return helper(root->left, mini, root->val) && helper(root->right, root->val, maxa) ;
     }
 };
