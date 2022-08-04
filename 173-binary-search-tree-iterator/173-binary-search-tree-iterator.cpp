@@ -29,7 +29,7 @@ public:
     }
     
     void pushall(TreeNode * node){
-        for(;node!=NULL ; node=node->left)s.push(node);
+        for(;node!=NULL ; s.push(node),  node=node->left);
     }
 
 };
