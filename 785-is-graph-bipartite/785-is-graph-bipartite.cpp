@@ -16,7 +16,7 @@ public:
             for(auto it: graph[node]){
                 if(color[it]==-1){
                     color[it]=1-color[node];
-                    if(!check_DFS(it,graph,color))return false;
+                    if(!check_BFS(it,graph,color))return false;
                 }
                 else if(color[it]==color[node])return false;
             }
