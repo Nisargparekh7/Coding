@@ -1,34 +1,35 @@
 class Solution {
 public:
-    //recursion- same as Subset-1 problem. Just use set<vector> instead of vector of vector.
-    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        set<vector<int>> ans;
-        vector<int> output;
-        int index=0;
-        sort(nums.begin(),nums.end());
-        solve(nums, index, output, ans);
-       
-        //as we need to submit answer in vector<vector>.
-        vector<vector<int>> a;
-        for(auto it: ans){
-            a.push_back(it);
+    //other approch using recursion.
+    void subset_sum(int index, vector<int>& nums, vector<vector<int>>& sum, vector<int>&temp){
+        
+        //basecase
+        if(index==nums.size()) {
+            if(std::find (sum.begin(), sum.end(), temp)== sum.end()) {
+            sum.push_back(temp);    
+            }
+
+            return ;
         }
-        return a;
+        
+    //with element
+      temp.push_back(nums[index]);
+      subset_sum(index+1,nums,sum,temp);
+      //removing taken element
+      temp.pop_back();
+      //without element
+      subset_sum(index+1,nums,sum,temp);
+       
     }
     
-    void solve(vector<int> nums, int index, vector<int> output, set<vector<int>> &ans){
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         
-        //base case
-        if(index>=nums.size()){
-            ans.insert(output);
-            return;
-        }
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> sum;
+        vector<int> temp;
         
-        //recursion call without taking element
-        solve(nums, index+1, output, ans);
-        
-        //recursion call with taking element
-        output.push_back(nums[index]);
-        solve(nums, index+1, output, ans);
+        subset_sum(0,nums,sum,temp);
+
+        return sum;
     }
 };
