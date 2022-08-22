@@ -1,34 +1,32 @@
 class Solution {
 public:
-    
-    void subset_sum(int index, vector<int>& nums, vector<vector<int>>& sum, vector<int>&temp, int n){
-        if(index==n) {
-            if(std::find (sum.begin(), sum.end(), temp)== sum.end()) {
-            sum.push_back(temp);    
-            }
-            
-            return ;
-        }
-        
-      temp.push_back(nums[index]);
-     
-      
-      subset_sum(index+1,nums,sum,temp, n);
-      
-      temp.pop_back();
-      
-      subset_sum(index+1,nums,sum,temp,n);
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        set<vector<int>> ans;
+        vector<int> output;
+        int index=0;
+        sort(nums.begin(),nums.end());
+        solve(nums, index, output, ans);
+        vector<vector<int>> a;
        
+        for(auto it: ans){
+            a.push_back(it);
+        }
+        return a;
     }
     
-    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        vector<vector<int>> sum;
-        int N= nums.size();
+    void solve(vector<int> nums, int index, vector<int> output, set<vector<int>> &ans){
         
-        vector<int> temp;
-        subset_sum(0,nums,sum,temp,N);
-
-        return sum;
+        //base case
+        if(index>=nums.size()){
+            ans.insert(output);
+            return;
+        }
+        
+        //recursion call without taking element
+        solve(nums, index+1, output, ans);
+        
+        //recursion call with taking element
+        output.push_back(nums[index]);
+        solve(nums, index+1, output, ans);
     }
 };
