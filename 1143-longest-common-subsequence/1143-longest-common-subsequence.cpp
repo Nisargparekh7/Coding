@@ -18,8 +18,11 @@ public:
              }
          }
         //code for printing LCS
-        int len=dp[n1][n2];
+        
+        //total length of our string will be dp[n1][n2]
+        int len=dp[n1][n2];  
         string ans="";
+        //intialzing with dummy char, and we will replace it from last char to first char
         for(int i=0;i<len;i++)ans+='$';
         
         int index=len-1;
