@@ -7,26 +7,33 @@ using namespace std;
 class Solution
 {
     public:
-    pair<long,long> indexes(vector<long long> nums, long long x)
+    pair<long,long> indexes(vector<long long> v, long long x)
     {
         // code here
         pair<long,long>ans={-1,-1};
-        long long n= nums.size();
-        long long low =0, high = n-1;
-        long long mid;
-        while(low<=high){
-            mid=(low+high)/2;
-            if(nums[mid]==x){
-                int left=mid,right=mid;
-                while(left-1>=0 && nums[left-1]==nums[mid])left--;
-                while(right+1<n && nums[right+1]==nums[mid])right++;
-                ans.first=left;
-                ans.second=right;
-                return ans;
-            }
-            if(nums[mid]>x)high=mid-1;
-            else low=mid+1;
-        }
+        // long long n= nums.size();
+        // long long low =0, high = n-1;
+        // long long mid;
+        // while(low<=high){
+        //     mid=(low+high)/2;
+        //     if(nums[mid]==x){
+        //         int left=mid,right=mid;
+        //         // while(left-1>=0 && nums[left-1]==nums[mid])left--;
+        //         // while(right+1<n && nums[right+1]==nums[mid])right++;
+        //         left=lower_bound(v.begin(), v.end(), nums[mid]);
+        //         left=left-v.begin();
+        //         ans.first=left;
+        //         ans.second=right;
+        //         return ans;
+        //     }
+        //     if(nums[mid]>x)high=mid-1;
+        //     else low=mid+1;
+        // }
+        int left=lower_bound(v.begin(), v.end(), x)-v.begin();
+        if(left==v.size()||v[left]!=x) return ans;
+        int right= lower_bound(v.begin(), v.end(), x+1)-v.begin()-1;
+        ans.first=left;
+        ans.second=right;
         return ans;
     }
 };
