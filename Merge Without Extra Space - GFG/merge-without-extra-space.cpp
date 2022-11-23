@@ -7,25 +7,44 @@ using namespace std;
 class Solution{
     public:
         //Function to merge the arrays.
-        void merge(long long arr1[], long long arr2[], int n, int m) 
+        void merge(long long nums1[], long long nums2[], int n, int m) 
         { 
             // code here 
-            long long i=0,j=0;
-            int k=n-1;
-            while(i<=k && j<m){
-                if(arr1[i]<arr2[j])i++;
-                else if(arr1[i]>=arr2[j]){
-                    swap(arr1[k],arr2[j]);
-                    k--;
-                    j++;
-                }
-            }
-            // while(j<m && n<k){
-            //     arr1[n++]=arr2[j++];
+            // long long i=0,j=0;
+            // int k=n-1;
+            // while(i<=k && j<m){
+            //     if(arr1[i]<arr2[j])i++;
+            //     else if(arr1[i]>=arr2[j]){
+            //         swap(arr1[k],arr2[j]);
+            //         k--;
+            //         j++;
+            //     }
             // }
             
-            sort(arr1,arr1+n);
-            sort(arr2,arr2+m);
+            // sort(arr1,arr1+n);
+            // sort(arr2,arr2+m);
+            
+            int gap=ceil((float) (m+n)/2 );
+        while(gap>0){
+            int i=0;
+            int j=gap;
+            while(j<(m+n)){
+                if(j<n && nums1[i]>nums1[j])swap(nums1[i],nums1[j]); 
+                else if(j>=n && i<n && nums1[i]> nums2[j-n]) {
+                    swap(nums1[i],nums2[j-n]);
+                }
+                else if (j>=n && i>=n && nums2[i-n]> nums2[j-n]){
+                    swap(nums2[i-n],nums2[j-n]);;
+                } 
+                 i++;
+                j++;
+            }
+
+            if(gap==1){
+                gap=0;
+            }
+            else gap=ceil((float)gap/2);
+        }
         } 
 };
 
