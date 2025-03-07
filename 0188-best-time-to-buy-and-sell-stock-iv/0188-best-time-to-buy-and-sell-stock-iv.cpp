@@ -5,16 +5,16 @@ public:
         int minp[k];
         int maxp[k];
 
-        if(k> n/2){
-        int maxprofit =0;
-        if (n==1) return 0;
-        for (int i=0;i<n-1;i++){
-            if(prices[i]< prices[i+1]){
-            maxprofit += prices[i+1]- prices[i];
-            }
-        }
-        return maxprofit;
-        }
+        // if(k> n/2){
+        // int maxprofit =0;
+        // if (n==1) return 0;
+        // for (int i=0;i<n-1;i++){
+        //     if(prices[i]< prices[i+1]){
+        //     maxprofit += prices[i+1]- prices[i];
+        //     }
+        // }
+        // return maxprofit;
+        // }
 
 
         for(int i=0;i<k;i++){
