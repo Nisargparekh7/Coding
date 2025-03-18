@@ -1,24 +1,28 @@
 class Solution {
 public:
     double myPow(double x, int n) {
-        double ans=1;
+        double ans= 1;
         bool flag =0;
-        long nn =n;
+        long  i=n;
         if(n<0){
-            nn = -1* nn;
-            flag =1;
+            i = (long)-1*n;
+            flag=1;
         }
-        while(nn>0){
-            if(nn%2==1){
-                ans*= x;
-                nn=  nn-1;
+
+        while(i>0){
+            printf("%d\n",i);
+            if(i%2 == 0){
+                x= x*x;
+                i = i/2;
             }
             else{
-                x=x*x;
-                nn= nn/2;
+                ans *= x;
+                i = i-1;
+
             }
         }
         if(flag) return (1/ans);
         return ans;
+
     }
 };
